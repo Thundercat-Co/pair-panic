@@ -4,17 +4,12 @@ let cardNames = ['backside', 'boxcat', 'dishwasher', 'fetcher', 'licker', 'monor
 // let pair1 = [];
 // let pair2 = [];
 let dataList =[...cardNames, ...cardNames];
-let cardCount = dataList.length;
 let cardsDisplay = document.getElementById('cards-display');
-let activeTile = null;
-let awaitingEndOfMove = false;
-
-// Should player go in a seperate player.js file?
-// let player = {
-//     // playerName: ,
-//     playerScore: 0,
-// }
-
+let gameState = {
+  cardCount: dataList.length,
+  activeTile: null,
+  awaitingEndOfMove: false,
+}
 // Construction function for creating card objects
 function Card (name, pairStack){
   this.name = name;
@@ -24,11 +19,11 @@ function Card (name, pairStack){
 }
 // Usingt the construct funtion to create cards for each cardname index
 function createCards(){
-  for(let i=0; i<cardNames.length; i++){
+  for(let i=0; i<16; i++){
     new Card(cardNames[i], '1');
-  }
-  for(let i=0; i<cardNames.length; i++){
-    new Card(cardNames[i], '2');
+    if(allCards.includes(cardNames[i])){
+      new Card(cardNames[i], '2');
+    }
   }
   console.log(allCards);
 }
@@ -40,7 +35,6 @@ function setGame(card){
   cardImage.setAttribute('data-revealed', false);
   cardImage.addEventListener('click', handleFlip);
   resetCard();
-
 }
 function resetCard(){
 
