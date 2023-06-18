@@ -9,11 +9,6 @@ let cardsDisplay = document.getElementById('cards-display');
 let activeTile = null;
 let awaitingEndOfMove = false;
 
-// Should player go in a seperate player.js file?
-// let player = {
-//     // playerName: ,
-//     playerScore: 0,
-// }
 
 // Construction function for creating card objects
 function Card (name, pairStack){
