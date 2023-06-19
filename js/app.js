@@ -9,6 +9,7 @@ let gameState = {
   activeTile: null,
   awaitingEndOfMove: false,
   playerHand: [],
+  playerWins: [],
 };
 // Construction function for creating card objects
 function Card (name, pairStack, uniqueId){
@@ -27,54 +28,100 @@ function getRandomIndex(){
 function createPair(){
   for(let i=0; i<cardNames.length; i++){
     new Card(cardNames[i], '1', i);
-  } 
+  }
   for(let i=0; i<cardNames.length; i++){
     new Card(cardNames[i], '2', 8+i);
   }
 }
 createPair();
 
-function setGame(card){
-  let cardImage = document.createElement('img');
-  cardImage.classList.add('card');
-  cardImage.setAttribute('src', `${card.logo}`); 
-  cardImage.setAttribute('id', `${card.uniqueId}`);
-  cardImage.setAttribute('pair', `${card.pairStack}`);
-  cardImage.setAttribute('data-revealed', false);
-  cardImage.addEventListener('click', handleFlip);
-  return cardImage;
-  // returning card Image instead of appending
+function buildCard(card){
+  let cardDiv = document.createElement('div');
+  // cardDiv.setAttribute('id', card.uniqueId);
+  cardDiv.setAttribute('pair', card.pairStack);
+  cardDiv.setAttribute('data-name', card.name);
+  cardDiv.addEventListener('click', handleFlip);
+  cardDiv.classList.add('card');
+
+  let frontImage = document.createElement('img');
+  frontImage.setAttribute('src', card.logo);
+  cardDiv.appendChild(frontImage);
+
+  let backImage = document.createElement('img');
+  backImage.setAttribute('src', card.image);
+  cardDiv.appendChild(backImage);
+
+  // cardsContainer.appendChild(cardDiv);
+  // console.log(cardDiv);
+  return cardDiv;
 }
 // Fucntion has been started for generating random images on the game board, however images are not randomizes
 function renderGame(){
-  // <<---- Working rendered code, however not randomized---->>
   for(let i=0; i<allCards.length; i++){
-    cardsContainer.appendChild(setGame(allCards[i]));
+    cardsContainer.appendChild(buildCard(allCards[i]));
+    // buildCard(allCards[i]);
   }
+}
+renderGame();
 
+function matched(){
+  let card1 = gameState.playerHand[0];
+  let card2 = gameState.playerHand[1];
+  if(card1.getAttribute('name') === card2.getAttribute('name')){
+    alert('yep, thats right!');
+  }else{
+    alert('try again!');
+    card1.classList.remove('flipped');
+    card2.classList.remove('flipped');
+  }
+  gameState.playerHand = [];
+}
+// Should we assaign the rendering pick
+function handleFlip(){
+  const card = document.getElementsByClassName('card')[0];
+  gameState.playerHand.push(this);
+  this.classList.add('flipped');
+  this.classList.toggle('flipped');
+  if(gameState.playerHand.length === 2){
+    setTimeout(matched, 250);
+  }
+  // event.preventDefault();
+  // let cardStack = this.getAttribute('id');
+  // let revealed = this.getAttribute('data-revealed');
+  // revealed = true;
+  // gameState.playerHand.push(allCards[cardStack]);
+  // this.setAttribute('src', allCards[cardStack].image);
+  // if(gameState.playerHand.length === 2){
+  //   setTimeout(matched, 250);
+  // }else{
 
-  //  <<< ---- Notes Below ---- >>>
-
-  // <--------   below code kinda works but is buggy    -------->
-  // for(let i=0; i<allCards.length; i++){
-  //   let randomIndex = getRandomIndex();
-  //   let selectedCard = allCards[randomIndex];
-  //   let cardsGenerated = [];
-  //   if(cardsGenerated.includes(selectedCard)){
-  //     setGame(allCards[getRandomIndex()]);
-  //   }else{
-  //     cardsGenerated.push(selectedCard);
-  //     cardsContainer.appendChild(setGame(allCards[i]));
-  //   }
   // }
-  // <<--- end of code block---->>>
+}
+console.log(gameState.playerHand);
+
+
+//  <<< ---- Notes Below ---- >>>
+
+// <--------   below code kinda works but is buggy    -------->
+// for(let i=0; i<allCards.length; i++){
+//   let randomIndex = getRandomIndex();
+//   let selectedCard = allCards[randomIndex];
+//   let cardsGenerated = [];
+//   if(cardsGenerated.includes(selectedCard)){
+//     buildCard(allCards[getRandomIndex()]);
+//   }else{
+//     cardsGenerated.push(selectedCard);
+//     cardsContainer.appendChild(buildCard(allCards[i]));
+//   }
+// }
+// <<--- end of code block---->>>
 
 
   // <-------    below code kinda works but is buggy  ----->
   // const randomIndex = Math.floor(Math.random()* cardChoices.length);
   // for(let i=0; i<allCards.length; i++){
   //   const randomCard = allCards[randomIndex];
-  //   const renderedCard = setGame(randomCard);
+  //   const renderedCard = buildCard(randomCard);
   //   cardChoices.splice(randomIndex, 1);
   //   cardsContainer.appendChild(renderedCard);
   // }
@@ -85,38 +132,9 @@ function renderGame(){
   // function randomCard(){
   //   for (let i=0; i<allCards; i++){
   //     let image = allCards.at(getRandomIndex());
-  //     let card = setGame(image);
+  //     let card = buildCard(image);
   //     dataList[i].splice(image);
   //     cardsDisplay.appendChild(card);
   //   }
   // }
   // <<--- end of code block---->>>
-
-}
-renderGame();
-
-function matched(){
-  let pair1 = gameState.playerHand[0].name;
-  let pair2 = gameState.playerHand[1].name;
-  if(pair1 === pair2){
-    alert('yep, thats right!');
-    console.log(`this is the first pair ${pair1}, this is the second pair ${pair2}`);
-  }else{
-    alert('try again!');
-  }
-}
-// Should we assaign the rendering pick
-function handleFlip(){
-  // event.preventDefault();
-  let cardStack = this.getAttribute('id');
-  let revealed = this.getAttribute('data-revealed');
-  revealed = true;
-  gameState.playerHand.push(allCards[cardStack]);
-  this.setAttribute('src', allCards[cardStack].image);
-  if (gameState.playerHand.length === 2) {
-    setTimeout(matched, 250);
-  }else{
-
-  }
-}
-console.log(gameState.playerHand);

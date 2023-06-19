@@ -1,3 +1,31 @@
 body {
     background-color: #4D908E;
 }
+div.card {
+    width: 255px;
+    height: 345px;
+    transition: transform 1s;
+    transform-style: preserve-3d;
+}
+div.card.flipped {
+    transform: rotateY( 180deg ) ;
+    transition: transform 0.5s;
+}
+img.front {
+    background: #eee;
+    color: #03446A;
+}
+img.back {
+    background: #03446A;
+    color: white;
+    transform: rotateY( 180deg );
+}
+img.front, img.back {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    line-height: 300px;
+    text-align: center;
+    font-size: 60px;
+    backface-visibility: hidden;
+}
