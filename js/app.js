@@ -14,6 +14,7 @@ let gameState = {
 function Card (name, pairStack, uniqueId){
   this.name = name;
   this.image = `img/${name}.png`;
+  this.logo = 'img/backside.png';
   this.pairStack = pairStack;
   this.uniqueId = uniqueId;
   allCards.push(this);
@@ -36,7 +37,7 @@ createPair();
 function setGame(card){
   let cardImage = document.createElement('img');
   cardImage.classList.add('card');
-  cardImage.setAttribute('src', `${card.image}`);
+  cardImage.setAttribute('src', `${card.logo}`); 
   cardImage.setAttribute('id', `${card.uniqueId}`);
   cardImage.setAttribute('pair', `${card.pairStack}`);
   cardImage.setAttribute('data-revealed', false);
@@ -104,11 +105,12 @@ function matched(){
     alert('try again!');
   }
 }
-
+// Should we assaign the rendering pick
 function handleFlip(){
   // event.preventDefault();
   let cardStack = this.getAttribute('id');
   let revealed = this.getAttribute('data-revealed');
+  revealed = true;
   gameState.playerHand.push(allCards[cardStack]);
   this.setAttribute('src', allCards[cardStack].image);
   if (gameState.playerHand.length === 2) {
