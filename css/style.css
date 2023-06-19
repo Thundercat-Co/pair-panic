@@ -1,0 +1,93 @@
+body {
+    background-color: #4D908E;
+    width: 1440px;
+    margin: auto;
+}
+header{
+    background-color: #90BE6D;
+    border-top: 4px solid #03446A;
+    border-bottom: 4px solid #03446A;
+    padding: 5px;
+    margin-top: 2em;
+    width: 100%;
+    text-align: center;
+}
+
+a{
+    text-decoration: none;
+    text-decoration-color: none
+}
+h1{
+    font-size: 2em;
+    padding: 5px;
+    font-family: 'Permanent Marker', cursive;
+}
+h2{
+    font-size: 1.5em;
+}
+#game-rules{
+    
+}
+img{
+    margin: 5px;
+    border: 2px solid  #03446A;
+}
+fieldset{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 100%;
+}
+legend{
+    font-size: 1.5em;
+}
+button{
+    width: 100px;
+    border-radius: 5px;
+}
+footer {
+    border-top: 4px solid #03446A;
+    border-bottom: 4px solid #03446A;
+    padding: 5px;
+    background-color:#90BE6D;
+    width: 100%;
+}
+footer p{
+    text-align: center;
+}
+
+
+div.card {
+    width: 255px;
+    height: 345px;
+    transition: transform 1s;
+    transform-style: preserve-3d;
+}
+div.card.flipped {
+    transform: rotateY( 180deg ) ;
+    transition: transform 0.5s;
+}
+img.front {
+    background: #eee;
+    color: #03446A;
+}
+img.back {
+    background: #03446A;
+    color: white;
+    transform: rotateY( 180deg );
+}
+img.front, img.back {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    line-height: 300px;
+    text-align: center;
+    font-size: 60px;
+    backface-visibility: hidden;
+}
+
+#cards-display{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
