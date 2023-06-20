@@ -19,9 +19,10 @@ function Card (name, pairStack, uniqueId){
   allCards.push(this);
 }
 // Helper function for randomizing card choice
-function getRandomIndex(){
-  return Math.floor(Math.random()* allCards.length);
-}
+// function getRandomIndex(){
+//   return Math.floor(Math.random()* allCards.length);
+
+
 // Usingt the construct funtion to create cards for each cardname index
 function createPair(){
   for(let i=0; i<cardNames.length; i++){
@@ -43,21 +44,30 @@ function buildCard(card){
 
   let frontImage = document.createElement('img');
   frontImage.setAttribute('src', card.logo);
-  frontImage.setAttribute("id", card.name);
+  frontImage.setAttribute('id', card.name);
   cardDiv.appendChild(frontImage);
+
 
   return cardDiv;
 }
 // Fucntion has been started for generating random images on the game board, however images are not randomizes
 function renderGame(){
-  for(let i=0; i<allCards.length; i++){
+  // Shuffle cards using Fisher-Yates shuffle algorithm
+
+  for (let i=allCards.length - 1;i>0;i--) {
+    let j = Math.floor(Math.random()* (i+1));
+    [allCards[i],allCards[j]]=[allCards[j],allCards[i]];
+  }
+
+  for (let i=0; i<allCards.length; i ++){
     cardsContainer.appendChild(buildCard(allCards[i]));
   }
 }
+
 renderGame();
 
 function matched(cardName){
-  let cardElementArray = document.querySelectorAll(".card");
+  let cardElementArray = document.querySelectorAll('.card');
   if(activeCard === null){ // Runs if not card has been selected
     activeCard = cardName; 
   } else if(activeCard !== null){ // Runs if there has been a card selected
@@ -90,3 +100,8 @@ function handleFlip(e){
   }
   matched(e.target.id);
 }
+
+// Fix double click = match
+// Fix the form on index
+// Create scoring system
+// Store score
