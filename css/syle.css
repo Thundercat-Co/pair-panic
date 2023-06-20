@@ -29,3 +29,8 @@ img.front, img.back {
     font-size: 60px;
     backface-visibility: hidden;
 }
+
+#cards-display{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}

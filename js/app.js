@@ -4,6 +4,7 @@ let cardNames = [ 'boxcat', 'dishwasher', 'fetcher', 'gamer','licker', 'monorail
 let cardChoices = allCards;
 let cardsContainer= document.getElementById('cards-display');
 
+let activeCard = null;
 let gameState = {
   cardCount: allCards.length,
   activeTile: null,
@@ -37,7 +38,7 @@ createPair();
 
 function buildCard(card){
   let cardDiv = document.createElement('div');
-  // cardDiv.setAttribute('id', card.uniqueId);
+  cardDiv.setAttribute('id', card.uniqueId);
   cardDiv.setAttribute('pair', card.pairStack);
   cardDiv.setAttribute('data-name', card.name);
   cardDiv.addEventListener('click', handleFlip);
@@ -45,11 +46,12 @@ function buildCard(card){
 
   let frontImage = document.createElement('img');
   frontImage.setAttribute('src', card.logo);
+  frontImage.setAttribute("id", card.name);
   cardDiv.appendChild(frontImage);
 
-  let backImage = document.createElement('img');
-  backImage.setAttribute('src', card.image);
-  cardDiv.appendChild(backImage);
+  // let backImage = document.createElement('img');
+  // backImage.setAttribute('src', card.image);
+  // cardDiv.appendChild(backImage);
 
   // cardsContainer.appendChild(cardDiv);
   // console.log(cardDiv);
@@ -64,27 +66,89 @@ function renderGame(){
 }
 renderGame();
 
-function matched(){
-  let card1 = gameState.playerHand[0];
-  let card2 = gameState.playerHand[1];
-  if(card1.getAttribute('name') === card2.getAttribute('name')){
-    alert('yep, thats right!');
-  }else{
-    alert('try again!');
-    card1.classList.remove('flipped');
-    card2.classList.remove('flipped');
+function matched(cardName){
+  // let card1 = gameState.playerHand[0];
+  // let card2 = gameState.playerHand[1];
+  // if(card1.getAttribute('name') === card2.getAttribute('name')){
+  //   alert('yep, thats right!');
+  // }else{
+  //   alert('try again!');
+  //   card1.classList.remove('flipped');
+  //   card2.classList.remove('flipped');
+  // }
+  // gameState.playerHand = [];
+  let cardElementArray = document.querySelectorAll(".card");
+ 
+
+  if(activeCard === null){ // Runs if not card has been selected
+    activeCard = cardName; 
+  } else if(activeCard !== null){ // Runs if there has been a card selected
+    if(activeCard === cardName){ // Runs if user selected correct card
+      // alert('You got it dude');
+      
+      
+      for(let i = 0; i < cardElementArray.length; i++){
+        console.log(cardElementArray[i].getAttribute('data-name'), activeCard)
+        if(cardElementArray[i].getAttribute('data-name') == activeCard){
+          cardElementArray[i].style.visibility = "hidden";
+        }
+      }
+      
+      activeCard = null;
+
+    }else{ //Runs if user got wrong card
+
+
+      let cardImageArray = document.querySelectorAll(".card img")
+      setTimeout(function(){
+        for(let i = 0; i < cardImageArray.length; i++){
+          cardImageArray[i].setAttribute('src','img/backside.png');
+        }
+      }, 1000);
+      
+      
+
+      //  let recentlyClickedCard = document.getElementById(cardName)
+      //  let previousClickedCard = document.getElementById(activeCard)
+
+      //  setTimeout(function() {
+      //   recentlyClickedCard.setAttribute('src','img/backside.png')
+      //   previousClickedCard.setAttribute('src','img/backside.png' )
+      //  }, 1000)
+
+       activeCard = null;
+      //  alert('nah');
+    }
   }
-  gameState.playerHand = [];
+
+
+
+
 }
 // Should we assaign the rendering pick
-function handleFlip(){
-  const card = document.getElementsByClassName('card')[0];
-  gameState.playerHand.push(this);
-  this.classList.add('flipped');
-  this.classList.toggle('flipped');
-  if(gameState.playerHand.length === 2){
-    setTimeout(matched, 250);
+function handleFlip(e){
+
+  //On click we want to show the new image
+
+  const card = document.getElementById(e.target.id);
+  for(let i = 0; i < allCards.length; i++){ // Loops through card array 
+    if(allCards[i].name === e.target.id){
+     
+      e.target.setAttribute("src", allCards[i].image);
+    }
   }
+
+  matched(e.target.id);
+
+  // console.log(allCards)
+  // card.setAttribute("src")
+
+  // gameState.playerHand.push(this);
+  // this.classList.add('flipped');
+  // this.classList.toggle('flipped');
+  // if(gameState.playerHand.length === 2){
+  //   setTimeout(matched, 250);
+  // }
   // event.preventDefault();
   // let cardStack = this.getAttribute('id');
   // let revealed = this.getAttribute('data-revealed');
