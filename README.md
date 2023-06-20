@@ -2,7 +2,7 @@
 
 ## Version 1.0.0
 
-## Team Members:
+## Team Members
 
 * Genevieve DuPuy
 * Ariania Palmer
@@ -16,3 +16,4 @@
 ### ![Pair Panic Wireframes](/img/PairPanicWireframe.png)
 
 ### Credits
+Audio from [Pixabay](https://pixabay.com/)
