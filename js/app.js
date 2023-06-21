@@ -4,6 +4,7 @@ let cardNames = [ 'boxcat', 'dishwasher', 'fetcher', 'gamer','licker', 'monorail
 let cardsContainer= document.getElementById('cards-display');
 
 let activeCard = null;
+let activeId = null;
 let gameState = {
   cardCount: allCards.length,
   awaitingEndOfMove: false,
@@ -45,6 +46,7 @@ function buildCard(card){
   let frontImage = document.createElement('img');
   frontImage.setAttribute('src', card.logo);
   frontImage.setAttribute('id', card.name);
+  frontImage.setAttribute('data-uniqueId',card.uniqueId);
   cardDiv.appendChild(frontImage);
 
 
@@ -66,12 +68,16 @@ function renderGame(){
 
 renderGame();
 
-function matched(cardName){
+function matched(cardElement){
+  let cardName = cardElement.id;
+  let recentlyClickedId = cardElement.dataset.uniqueid;
+  console.log('this is card Element', cardElement);
   let cardElementArray = document.querySelectorAll('.card');
   if(activeCard === null){ // Runs if not card has been selected
+    activeId = recentlyClickedId;
     activeCard = cardName; 
   } else if(activeCard !== null){ // Runs if there has been a card selected
-    if(activeCard === cardName){ // Runs if user selected correct card
+    if(activeCard === cardName && recentlyClickedId != activeId){ // Runs if user selected correct card
       for(let i = 0; i < cardElementArray.length; i++){
         console.log(cardElementArray[i].getAttribute('data-name'), activeCard);
         if(cardElementArray[i].getAttribute('data-name') == activeCard){
@@ -98,7 +104,8 @@ function handleFlip(e){
       e.target.setAttribute('src', allCards[i].image);
     }
   }
-  matched(e.target.id);
+  matched(e.target);
+  console.log(e)
 }
 
 // Fix double click = match
