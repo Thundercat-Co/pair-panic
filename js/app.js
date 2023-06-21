@@ -2,12 +2,8 @@
 let allCards = [];
 let cardNames = [ 'boxcat', 'dishwasher', 'fetcher', 'gamer','licker', 'monorail', 'puppyeye', 'snuggler'];
 let cardsContainer= document.getElementById('cards-display');
-let playerData = [];
 allPlayers = [];
 let activePlayer;
-
-// console.log(allPlayers);
-// let playerData = Player.loadPlayers();
 
 let activeCard = null;
 let activeId = null;
@@ -117,6 +113,7 @@ function handleFlip(e){
   console.log(activePlayer[0].moves);
 }
 renderGame();
+console.log(allPlayers);
 
 // Fix the form on index
 // Create scoring system
