@@ -2,14 +2,28 @@
 let allCards = [];
 let cardNames = [ 'boxcat', 'dishwasher', 'fetcher', 'gamer','licker', 'monorail', 'puppyeye', 'snuggler'];
 let cardsContainer= document.getElementById('cards-display');
+allPlayers = [];
+let activePlayer;
 
 let activeCard = null;
 let activeId = null;
-let gameState = {
-  cardCount: allCards.length,
-  awaitingEndOfMove: false,
-  playerHand: [],
-};
+
+function getPlayers(){
+  let previousPlayerArray = localStorage.getItem('playerArray');
+  let playerArray = JSON.parse(previousPlayerArray);
+  if(playerArray){
+    for(let i=0; i<playerArray.length; i++){
+      allPlayers.push(playerArray[i]);
+    }
+  }
+}
+function currentPlayer(){
+  activePlayer = allPlayers.slice(-1);
+}
+getPlayers();
+currentPlayer();
+
+console.log(activePlayer);
 // Construction function for creating card objects
 function Card (name, pairStack, uniqueId){
   this.name = name;
@@ -33,7 +47,6 @@ createPair();
 
 function buildCard(card){
   let cardDiv = document.createElement('div');
-  // cardDiv.setAttribute('id', card.uniqueId);
   cardDiv.setAttribute('pair', card.pairStack);
   cardDiv.setAttribute('data-name', card.name);
   cardDiv.addEventListener('click', handleFlip);
@@ -46,7 +59,7 @@ function buildCard(card){
   cardDiv.appendChild(frontImage);
   return cardDiv;
 }
-// Fucntion has been started for generating random images on the game board, however images are not randomizes
+// Fucntion 
 function renderGame(){
   // Shuffle cards using Fisher-Yates shuffle algorithm
   for (let i=allCards.length - 1;i>0;i--) {
@@ -62,7 +75,7 @@ function renderGame(){
 function matched(cardElement){
   let cardName = cardElement.id;
   let recentlyClickedId = cardElement.dataset.uniqueid;
-  console.log('this is card Element', cardElement);
+  // console.log('this is card Element', cardElement);
   let cardElementArray = document.querySelectorAll('.card');
   if(activeCard === null){ // Runs if not card has been selected
     activeId = recentlyClickedId;
@@ -70,7 +83,7 @@ function matched(cardElement){
   } else if(activeCard !== null){ // Runs if there has been a card selected
     if(activeCard === cardName && recentlyClickedId != activeId){ // Runs if user selected correct card
       for(let i = 0; i < cardElementArray.length; i++){
-        console.log(cardElementArray[i].getAttribute('data-name'), activeCard);
+        // console.log(cardElementArray[i].getAttribute('data-name'), activeCard);
         if(cardElementArray[i].getAttribute('data-name') == activeCard){
           cardElementArray[i].style.visibility = 'hidden';
         }
@@ -87,7 +100,7 @@ function matched(cardElement){
     }
   }
 }
-// Should we assaign the rendering pick
+
 function handleFlip(e){
   const card = document.getElementById(e.target.id);
   for(let i = 0; i < allCards.length; i++){ // Loops through card array 
@@ -96,8 +109,11 @@ function handleFlip(e){
     }
   }
   matched(e.target);
+  activePlayer[0].moves +=1;
+  console.log(activePlayer[0].moves);
 }
 renderGame();
+console.log(allPlayers);
 
 // Fix the form on index
 // Create scoring system
