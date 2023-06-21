@@ -1,43 +1,48 @@
 body {
-    background-color: #90BE6D;
+    background-color: #EAE2B7;
     width: 1440px;
     margin: auto;
-    /* font-family: 'Gruppo', sans-serif; */
-    font-family: 'Tilt Neon', cursive;
+    font-family: 'Roboto', sans-serif;
     font-weight: bolder;
+    color: #003049;
 }
 header{
-    background-color: #F9C74F;
-    border-top: 8px solid #277DA1;
-    border-left: 8px solid #277DA1;
-    border-right: 4px solid #277DA1;
-    border-bottom: 4px solid #277DA1;
+    background-color: #EAE2B7;
+    border: 13px solid #fac766;
     border-radius: 150px;
     padding: 2em;
     margin-top: 2em;
-    width: 100%;
+    width: 40%;
+    margin-right: auto;
+    margin-left: auto;
 }
 
-a{
+a:visited, a:link{
     text-decoration: none;
-    text-decoration-color: none
+    text-decoration-color: none;
+    color: #d65353;
 }
 h1{
-  font-size: 3em;
-  /* font-family: 'Permanent Marker', cursive; */
-  display: flex;
-  justify-content: center;
+    font-family: 'Tilt Neon', cursive;
+    font-size: 5em;
+    display: flex;
+    justify-content: center;
+    color: #d65353;
 }
 nav{
-  font-size: x-large;
+  font-size: xx-large;
   display: flex;
   justify-content: center;
+  padding-top: 15px;
 }
 a{
   padding: 0 20px 0 20px;
 }
 h2{
     font-size: 30px;
+}
+#game-examples{
+    display: flex;
 }
 #game-rules{
     font-size: 20px;
@@ -49,8 +54,8 @@ h2{
   font-size: xx-large;
 }
 img{
-    margin: 5px;
-    border: 2px solid  #277DA1;
+    margin: 25px;
+    border: 2px solid  #fac766;
 }
 fieldset{
     display: flex;
@@ -75,14 +80,14 @@ article{
   font-size: 20px;
 }
 footer {
-    border-top: 4px solid #277DA1;
-    border-left: 4px solid #277DA1;
-    border-right: 8px solid #277DA1;
-    border-bottom: 8px solid #277DA1;
+    border-top: 4px solid #fac766;
+    border-left: 4px solid #fac766;
+    border-right: 8px solid #fac766;
+    border-bottom: 8px solid #fac766;
     border-radius: 2em;
     padding: 1em;
     margin-bottom: 2em;
-    background-color: #F9C74F;
+    background-color: #EAE2B7;
 }
 footer p{
     text-align: center;
@@ -91,8 +96,8 @@ footer p{
 
 
 div.card {
-    width: 255px;
-    height: 345px;
+    /* width: 255px; */
+    /* height: 345px; */
     transition: transform 1s;
     transform-style: preserve-3d;
 }
@@ -101,12 +106,12 @@ div.card.flipped {
     transition: transform 0.5s;
 }
 img.front {
-    background: #eee;
-    color: #277DA1;
+    /* background: #eee; */
+    /* color: #fac766; */
 }
 img.back {
-    background: #277DA1;
-    color: white;
+    /* background: #fac766; */
+    /* color: white; */
     transform: rotateY( 180deg );
 }
 img.front, img.back {
