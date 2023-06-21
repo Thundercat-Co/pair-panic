@@ -2,6 +2,7 @@
 let allCards = [];
 let cardNames = [ 'boxcat', 'dishwasher', 'fetcher', 'gamer','licker', 'monorail', 'puppyeye', 'snuggler'];
 let cardsContainer= document.getElementById('cards-display');
+let displayPlay = document.getElementById('game-space');
 let allPlayerData = [];
 let activePlayer;
 let matches = 8;
@@ -96,7 +97,14 @@ function matched(cardElement){
     }
   }
 }
-
+function updateTally(usr){
+  let player = usr.user;
+  let nameContainer = document.getElementById('name');
+  nameContainer.textContent = `Player : ${player}`;
+  let renderedMoves = usr.moves;
+  let movesContainer = document.getElementById('tally');
+  movesContainer.textContent =`Moves : ${renderedMoves}`;
+}
 // need a function for when the game ends/when there are no more cards to flip
 function handleFlip(e){
   const card = document.getElementById(e.target.id);
@@ -107,7 +115,7 @@ function handleFlip(e){
   }
   matched(e.target);
   activePlayer.moves +=1;
-  console.log(matches);
+  updateTally(activePlayer);
   if(matches===0){
     let addBtn = document.getElementById('end-button');
     let congratBtn = document.createElement('button');
