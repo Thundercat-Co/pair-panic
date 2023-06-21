@@ -1,16 +1,21 @@
 body {
-    background-color: #4D908E;
+    background-color: #90BE6D;
     width: 1440px;
     margin: auto;
+    /* font-family: 'Gruppo', sans-serif; */
+    font-family: 'Tilt Neon', cursive;
+    font-weight: bolder;
 }
 header{
-    background-color: #90BE6D;
-    border-top: 4px solid #03446A;
-    border-bottom: 4px solid #03446A;
-    padding: 5px;
+    background-color: #F9C74F;
+    border-top: 8px solid #277DA1;
+    border-left: 8px solid #277DA1;
+    border-right: 4px solid #277DA1;
+    border-bottom: 4px solid #277DA1;
+    border-radius: 150px;
+    padding: 2em;
     margin-top: 2em;
     width: 100%;
-    text-align: center;
 }
 
 a{
@@ -18,19 +23,34 @@ a{
     text-decoration-color: none
 }
 h1{
-    font-size: 2em;
-    padding: 5px;
-    font-family: 'Permanent Marker', cursive;
+  font-size: 3em;
+  /* font-family: 'Permanent Marker', cursive; */
+  display: flex;
+  justify-content: center;
+}
+nav{
+  font-size: x-large;
+  display: flex;
+  justify-content: center;
+}
+a{
+  padding: 0 20px 0 20px;
 }
 h2{
-    font-size: 1.5em;
+    font-size: 30px;
 }
 #game-rules{
-    
+    font-size: 20px;
+}
+#game-space{
+  display: flex;
+  justify-content: space-evenly;
+  margin: 2em 0 1em 0;
+  font-size: xx-large;
 }
 img{
     margin: 5px;
-    border: 2px solid  #03446A;
+    border: 2px solid  #277DA1;
 }
 fieldset{
     display: flex;
@@ -41,20 +61,32 @@ fieldset{
 }
 legend{
     font-size: 1.5em;
+    text-align: center;
 }
 button{
     width: 100px;
     border-radius: 5px;
 }
+.creatorText{
+  font-size: 20px;
+}
+article{
+  margin: 2em;
+  font-size: 20px;
+}
 footer {
-    border-top: 4px solid #03446A;
-    border-bottom: 4px solid #03446A;
-    padding: 5px;
-    background-color:#90BE6D;
-    width: 100%;
+    border-top: 4px solid #277DA1;
+    border-left: 4px solid #277DA1;
+    border-right: 8px solid #277DA1;
+    border-bottom: 8px solid #277DA1;
+    border-radius: 2em;
+    padding: 1em;
+    margin-bottom: 2em;
+    background-color: #F9C74F;
 }
 footer p{
     text-align: center;
+    font-size: x-large;
 }
 
 
@@ -70,10 +102,10 @@ div.card.flipped {
 }
 img.front {
     background: #eee;
-    color: #03446A;
+    color: #277DA1;
 }
 img.back {
-    background: #03446A;
+    background: #277DA1;
     color: white;
     transform: rotateY( 180deg );
 }
@@ -90,4 +122,10 @@ img.front, img.back {
 #cards-display{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
+    width: 1070px;
+    height: 1430px;
+    margin: 0 auto 0 auto;
+}
+#quit {
+ 
 }
