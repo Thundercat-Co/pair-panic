@@ -10,7 +10,7 @@ let activeCard = null;
 let activeId = null;
 
 function getPlayers(){
-  let previousPlayerArray = localStorage.getItem('playerArray');
+  let previousPlayerArray = localStorage.getItem('playerArr');
   let playerArray = JSON.parse(previousPlayerArray);
   for(let i=0; i<playerArray.length; i++){
     allPlayerData.push(playerArray[i]);
@@ -123,7 +123,7 @@ function saveScores(){
   console.log('save scores ran.............');
   allPlayerData.push(activePlayer);
   let playerDataString = JSON.stringify(allPlayerData);
-  localStorage.setItem('playerDataArr', playerDataString);
+  localStorage.setItem('playerArr', playerDataString);
 }
 
 // Fix the form on index

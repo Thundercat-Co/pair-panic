@@ -16,13 +16,13 @@ new Player('Ari', 25);
 
 function handleClick(event){
   let name = event.target.name.value;
-  let oldArray = localStorage.getItem('playerArray');
+  let oldArray = localStorage.getItem('playerArr');
   if(oldArray){
     allPlayers = JSON.parse(oldArray);
   }
   new Player(name);
   let allPlayersString = JSON.stringify(allPlayers);
-  localStorage.setItem('playerArray', allPlayersString);
+  localStorage.setItem('playerArr', allPlayersString);
   event.preventDefault();
 }
 

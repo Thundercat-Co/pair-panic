@@ -8,7 +8,7 @@ let userData = [];
 let scoresList = document.getElementById('scores');
 
 function retrieveData(){
-  let prevDataArr = localStorage.getItem('playerDataArr');
+  let prevDataArr = localStorage.getItem('playerArr');
   let newDataArr = JSON.parse(prevDataArr);
   for(let i=0; i<newDataArr.length; i++){
     userData.push(newDataArr[i]);
