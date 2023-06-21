@@ -5,13 +5,25 @@
 // possibly display in order of who did the best using .sort() array method?
 
 let userData = [];
+let scoresList = document.getElementById('scores');
 
 function retrieveData(){
   let prevDataArr = localStorage.getItem('playerDataArr');
   let newDataArr = JSON.parse(prevDataArr);
   for(let i=0; i<newDataArr.length; i++){
     userData.push(newDataArr[i]);
-    console.log(userData);
   }
 }
 retrieveData();
+
+function displayDummies(){
+  for(let i=0; i<4; i++){
+    let listItem = document.createElement('li');
+    listItem.textContent = `${userData[i].name}............................................${userData[i].setScore}`;
+    scoresList.appendChild(listItem);
+  }
+  
+}
+console.log(userData);
+
+// live server http://127.0.0.1:5500/

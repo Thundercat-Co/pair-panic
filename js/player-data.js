@@ -25,6 +25,5 @@ function handleClick(event){
   localStorage.setItem('playerArray', allPlayersString);
   event.preventDefault();
 }
-// console.log(allPlayers);
 
 startForm.addEventListener('submit', handleClick);
