@@ -17,7 +17,7 @@ function getPlayers(){
   }
 }
 function currentPlayer(){
-  activePlayer = allPlayerData.slice(-1);
+  activePlayer = allPlayerData.pop();
 }
 getPlayers();
 currentPlayer();
@@ -76,7 +76,6 @@ function matched(cardElement){
   if(activeCard === null){ // Runs if not card has been selected
     activeId = recentlyClickedId;
     activeCard = cardName; 
-  
   } else if(activeCard !== null){ // Runs if there has been a card selected
     if(activeCard === cardName && recentlyClickedId != activeId){ // Runs if user selected correct card
       for(let i = 0; i < cardElementArray.length; i++){
@@ -107,24 +106,25 @@ function handleFlip(e){
     }
   }
   matched(e.target);
-  activePlayer[0].moves +=1;
-  saveScores();
+  activePlayer.moves +=1;
+  console.log(matches);
   if(matches===0){
     let addBtn = document.getElementById('end-button');
     let congratBtn = document.createElement('button');
     congratBtn.textContent = 'Congrats! Click Here To See Score!';
     addBtn.appendChild(congratBtn);
     congratBtn.setAttribute('onclick', "window.location.href='score.html';");
-
+    saveScores();
   }
 }
 renderGame();
 
 function saveScores(){
+  console.log('save scores ran.............');
+  allPlayerData.push(activePlayer);
   let playerDataString = JSON.stringify(allPlayerData);
   localStorage.setItem('playerDataArr', playerDataString);
 }
-saveScores();
 
 // Fix the form on index
 // Create scoring system
