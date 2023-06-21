@@ -2,7 +2,8 @@
 let allCards = [];
 let cardNames = [ 'boxcat', 'dishwasher', 'fetcher', 'gamer','licker', 'monorail', 'puppyeye', 'snuggler'];
 let cardsContainer= document.getElementById('cards-display');
-allPlayers = [];
+// let allPlayerData = allPlayers;
+let allPlayerData = [];
 let activePlayer;
 
 let activeCard = null;
@@ -11,19 +12,18 @@ let activeId = null;
 function getPlayers(){
   let previousPlayerArray = localStorage.getItem('playerArray');
   let playerArray = JSON.parse(previousPlayerArray);
-  if(playerArray){
-    for(let i=0; i<playerArray.length; i++){
-      allPlayers.push(playerArray[i]);
-    }
+  for(let i=0; i<playerArray.length; i++){
+    allPlayerData.push(playerArray[i]);
+    // console.log(allPlayerData);
   }
 }
 function currentPlayer(){
-  activePlayer = allPlayers.slice(-1);
+  activePlayer = allPlayerData.slice(-1);
 }
 getPlayers();
 currentPlayer();
 
-console.log(activePlayer);
+// console.log(activePlayer);
 // Construction function for creating card objects
 function Card (name, pairStack, uniqueId){
   this.name = name;
@@ -101,6 +101,8 @@ function matched(cardElement){
   }
 }
 
+// need a function for when the game ends/when there are no more cards to flip
+
 function handleFlip(e){
   const card = document.getElementById(e.target.id);
   for(let i = 0; i < allCards.length; i++){ // Loops through card array 
@@ -110,11 +112,17 @@ function handleFlip(e){
   }
   matched(e.target);
   activePlayer[0].moves +=1;
-  console.log(activePlayer[0].moves);
+  // console.log(activePlayer[0].moves);
 }
 renderGame();
-console.log(allPlayers);
+// console.log(allPlayerData);
 
+function saveScores(){
+  let playerDataString = JSON.stringify(allPlayerData);
+  localStorage.setItem('playerDataArr', playerDataString);
+  console.log(allPlayerData);
+}
+saveScores();
 // Fix the form on index
 // Create scoring system
 // Store score

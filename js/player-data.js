@@ -9,6 +9,11 @@ function Player(user, setScore){
   this.setScore = setScore;
   allPlayers.push(this);
 }
+new Player('Genevieve', 16);
+new Player('Drew', 20);
+new Player('Justin', 22);
+new Player('Ari', 25);
+
 function handleClick(event){
   let name = event.target.name.value;
   let oldArray = localStorage.getItem('playerArray');
@@ -20,9 +25,6 @@ function handleClick(event){
   localStorage.setItem('playerArray', allPlayersString);
   event.preventDefault();
 }
-new Player('Genevieve', 16);
-new Player('Drew', 20);
-new Player('Justin', 22);
-new Player('Ari', 25);
+// console.log(allPlayers);
 
 startForm.addEventListener('submit', handleClick);
