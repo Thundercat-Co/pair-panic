@@ -16,14 +16,22 @@ function retrieveData(){
 }
 retrieveData();
 
-function displayDummies(){
+function displayScores(){
   for(let i=0; i<4; i++){
     let listItem = document.createElement('li');
-    listItem.textContent = `${userData[i].name}............................................${userData[i].setScore}`;
+    listItem.textContent = `${userData[i].user}............................................${userData[i].setScore}`;
     scoresList.appendChild(listItem);
   }
-  
+  for(let i=4; i<userData.length; i++){
+    let listItem = document.createElement('li');
+    listItem.textContent = `${userData[i].user}............................................${userData[i].moves}`;
+    scoresList.appendChild(listItem);
+  }
+
 }
+displayScores();
+
+
 console.log(userData);
 
 // live server http://127.0.0.1:5500/

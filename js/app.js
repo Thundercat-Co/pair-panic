@@ -124,10 +124,8 @@ function saveScores(){
   let playerDataString = JSON.stringify(allPlayerData);
   localStorage.setItem('playerDataArr', playerDataString);
 }
+saveScores();
 
-function endGame(){
-
-}
 // Fix the form on index
 // Create scoring system
 // Store score
