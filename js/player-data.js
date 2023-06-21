@@ -3,10 +3,10 @@
 let startForm = document.getElementById('startGameForm');
 let allPlayers = [];
 
-function Player(user){
+function Player(user, setScore){
   this.user = user;
-  this.score =0;
-  console.log(this);
+  this.moves =0;
+  this.setScore = setScore;
   allPlayers.push(this);
 }
 function handleClick(event){
@@ -17,10 +17,15 @@ function handleClick(event){
   }
   new Player(name);
   let allPlayersString = JSON.stringify(allPlayers);
-  console.log(allPlayersString);
   localStorage.setItem('playerArray', allPlayersString);
   event.preventDefault();
 }
+
+new Player('Genevieve', 16);
+new Player('Drew', 20);
+new Player('Justin', 22);
+new Player('Ari', 25);
+
 startForm.addEventListener('submit', handleClick);
 // startButton.addEventListener('submit', handleSubmit)
 // So we don't get confused: SSGP
