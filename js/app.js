@@ -4,6 +4,7 @@ let cardNames = [ 'boxcat', 'dishwasher', 'fetcher', 'gamer','licker', 'monorail
 let cardsContainer= document.getElementById('cards-display');
 
 let activeCard = null;
+let activeId = null;
 let gameState = {
   cardCount: allCards.length,
   awaitingEndOfMove: false,
@@ -18,10 +19,6 @@ function Card (name, pairStack, uniqueId){
   this.uniqueId = uniqueId;
   allCards.push(this);
 }
-// Helper function for randomizing card choice
-// function getRandomIndex(){
-//   return Math.floor(Math.random()* allCards.length);
-
 
 // Usingt the construct funtion to create cards for each cardname index
 function createPair(){
@@ -36,7 +33,7 @@ createPair();
 
 function buildCard(card){
   let cardDiv = document.createElement('div');
-  cardDiv.setAttribute('id', card.uniqueId);
+  // cardDiv.setAttribute('id', card.uniqueId);
   cardDiv.setAttribute('pair', card.pairStack);
   cardDiv.setAttribute('data-name', card.name);
   cardDiv.addEventListener('click', handleFlip);
@@ -45,33 +42,33 @@ function buildCard(card){
   let frontImage = document.createElement('img');
   frontImage.setAttribute('src', card.logo);
   frontImage.setAttribute('id', card.name);
+  frontImage.setAttribute('data-uniqueId',card.uniqueId);
   cardDiv.appendChild(frontImage);
-
-
   return cardDiv;
 }
 // Fucntion has been started for generating random images on the game board, however images are not randomizes
 function renderGame(){
   // Shuffle cards using Fisher-Yates shuffle algorithm
-
   for (let i=allCards.length - 1;i>0;i--) {
     let j = Math.floor(Math.random()* (i+1));
     [allCards[i],allCards[j]]=[allCards[j],allCards[i]];
   }
-
   for (let i=0; i<allCards.length; i ++){
     cardsContainer.appendChild(buildCard(allCards[i]));
   }
 }
 
-renderGame();
 
-function matched(cardName){
+function matched(cardElement){
+  let cardName = cardElement.id;
+  let recentlyClickedId = cardElement.dataset.uniqueid;
+  console.log('this is card Element', cardElement);
   let cardElementArray = document.querySelectorAll('.card');
   if(activeCard === null){ // Runs if not card has been selected
+    activeId = recentlyClickedId;
     activeCard = cardName; 
   } else if(activeCard !== null){ // Runs if there has been a card selected
-    if(activeCard === cardName){ // Runs if user selected correct card
+    if(activeCard === cardName && recentlyClickedId != activeId){ // Runs if user selected correct card
       for(let i = 0; i < cardElementArray.length; i++){
         console.log(cardElementArray[i].getAttribute('data-name'), activeCard);
         if(cardElementArray[i].getAttribute('data-name') == activeCard){
@@ -98,10 +95,17 @@ function handleFlip(e){
       e.target.setAttribute('src', allCards[i].image);
     }
   }
-  matched(e.target.id);
+  matched(e.target);
 }
+renderGame();
 
-// Fix double click = match
 // Fix the form on index
 // Create scoring system
 // Store score
+// slow down second flip
+// So we don't get confused: SSGP
+//  stringify ---> js to local storage/JSON
+//  parse -------> local storage/JSON to js
+// JSON.stringify() A common use of JSON is to exchange data to/from a web server.
+// When sending data to a web server, the data has to be a string. 
+//Convert a JavaScript object into a string with JSON.stringify() .

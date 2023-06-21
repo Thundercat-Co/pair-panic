@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 
-    <script defer src="js/app.js"></script>
+    <!-- <script defer src="js/app.js"></script> -->
     <title>Home Page</title>
 </head>
 <body>
@@ -43,9 +43,11 @@
         </section>
         <form id="startGameForm">
             <fieldset>
+
                 <label for="name">Username:</label>
                 <input type="text" name="name" id="userName" required>
-                <button onclick="window.location.href='game.html';" type="submit">Start Game</button>
+                <button id="start-form" onclick="window.location.href='game.html';" type="submit">Start Game</button>
+
             </fieldset>
         </form>
     </main>
@@ -53,6 +55,7 @@
       <p>&copy; Thundercat Co. 2023</p>
     </footer>
 </body>
+<script  src="js/player-data.js"></script>
 </html> 
 
 <!-- Place holder img link: ---   "https://place-hold.it/200x500/000/fff"  -->
