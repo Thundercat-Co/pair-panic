@@ -19,10 +19,6 @@ function Card (name, pairStack, uniqueId){
   this.uniqueId = uniqueId;
   allCards.push(this);
 }
-// Helper function for randomizing card choice
-// function getRandomIndex(){
-//   return Math.floor(Math.random()* allCards.length);
-
 
 // Usingt the construct funtion to create cards for each cardname index
 function createPair(){
@@ -37,7 +33,7 @@ createPair();
 
 function buildCard(card){
   let cardDiv = document.createElement('div');
-  cardDiv.setAttribute('id', card.uniqueId);
+  // cardDiv.setAttribute('id', card.uniqueId);
   cardDiv.setAttribute('pair', card.pairStack);
   cardDiv.setAttribute('data-name', card.name);
   cardDiv.addEventListener('click', handleFlip);
@@ -48,25 +44,20 @@ function buildCard(card){
   frontImage.setAttribute('id', card.name);
   frontImage.setAttribute('data-uniqueId',card.uniqueId);
   cardDiv.appendChild(frontImage);
-
-
   return cardDiv;
 }
 // Fucntion has been started for generating random images on the game board, however images are not randomizes
 function renderGame(){
   // Shuffle cards using Fisher-Yates shuffle algorithm
-
   for (let i=allCards.length - 1;i>0;i--) {
     let j = Math.floor(Math.random()* (i+1));
     [allCards[i],allCards[j]]=[allCards[j],allCards[i]];
   }
-
   for (let i=0; i<allCards.length; i ++){
     cardsContainer.appendChild(buildCard(allCards[i]));
   }
 }
 
-renderGame();
 
 function matched(cardElement){
   let cardName = cardElement.id;
@@ -105,10 +96,16 @@ function handleFlip(e){
     }
   }
   matched(e.target);
-  console.log(e)
 }
+renderGame();
 
-// Fix double click = match
 // Fix the form on index
 // Create scoring system
 // Store score
+// slow down second flip
+// So we don't get confused: SSGP
+//  stringify ---> js to local storage/JSON
+//  parse -------> local storage/JSON to js
+// JSON.stringify() A common use of JSON is to exchange data to/from a web server.
+// When sending data to a web server, the data has to be a string. 
+//Convert a JavaScript object into a string with JSON.stringify() .
