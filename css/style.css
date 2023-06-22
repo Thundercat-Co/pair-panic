@@ -6,7 +6,7 @@ body {
   font-weight: bolder;
   color: #094c70;
 }
-header{
+header {
   background-color: #EAE2B7;
   border: 13px solid #fac766;
   border-radius: 150px;
@@ -17,48 +17,47 @@ header{
   margin-left: auto;
 }
 
-a:visited, a:link{
+a:visited, a:link {
   text-decoration: none;
   text-decoration-color: none;
   color: #d65353;
 }
-h1{
+h1 {
   font-family: 'Tilt Neon', cursive;
   font-size: 5em;
   display: flex;
   justify-content: center;
   color: #d65353;
 }
-nav{
+nav {
   font-size: xx-large;
   display: flex;
   justify-content: center;
   padding-top: 15px;
 }
-a{
+a {
   padding: 0 20px 0 20px;
 }
-h2{
+h2 {
   font-size: 30px;
   text-align: center;
   margin: 1em;
 }
-
-#game-rules{
+#game-rules {
   text-align: center;
   font-size: 20px;
 }
-#game-space{
+#game-space {
   display: flex;
   justify-content: space-evenly;
   margin: 2em 0 1em 0;
   font-size: xx-large;
 }
-img{
+img {
   margin: 25px;
-  /* border: 1px solid  #094c70; */
+  border: 1px solid  #094c70;
 }
-fieldset{
+fieldset {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -66,21 +65,28 @@ fieldset{
   max-width: 100%;
 }
 
-button{
+button {
   width: 125px;
   height: 30px;
   border-radius: 10px;
   margin-top: 5px;
 }
-.quit{
+.quit {
   display: block;
   margin-left: auto;
   margin-right: auto;
 }
-.creatorText{
+.creatorContainer p {
   font-size: 20px;
+  margin: 25px;
 }
-article{
+.creatorContainer .creator {
+  display: flex;
+}
+.creatorContainer .rightCreator {
+  flex-direction: row-reverse;
+}
+article {
   margin: 2em;
   font-size: 20px;
 }
@@ -94,7 +100,7 @@ footer {
   margin-right: auto;
   margin-left: auto;
 }
-footer p{
+footer p {
   text-align: center;
   font-size: x-large;
 }
@@ -108,13 +114,14 @@ div.card.flipped {
   transition: transform 0.5s;
 }
 
-#cards-display{
+#cards-display {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
 }
-article h2, p{
+.origin h2,
+.origin p {
   text-align: center;
 }
-hr{
+hr {
   margin-top: 40px;
 }
