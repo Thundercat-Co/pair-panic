@@ -17,10 +17,12 @@ header {
   margin-left: auto;
 }
 
-a:visited, a:link {
+h1 a:visited, a:link {
   text-decoration: none;
-  text-decoration-color: none;
   color: #d65353;
+}
+a:visited, a:link {
+  color: rgb(246, 103, 1);
 }
 h1 {
   font-family: 'Tilt Neon', cursive;
@@ -60,6 +62,17 @@ h2 {
 img {
   margin: 25px;
 }
+#scores {
+  color: #f5edc1;
+  background-color: rgb(246, 103, 1);
+  width: fit-content;
+  padding: 2em;
+  line-height: 25px;
+  border: 15px solid #fac766;
+  border-radius: 30px;
+  margin-right: auto;
+  margin-left: auto;
+}
 fieldset {
   display: flex;
   flex-direction: column;
@@ -67,7 +80,19 @@ fieldset {
   align-items: center;
   max-width: 100%;
 }
-
+#end-button button {
+  width: 200px;
+  height: 80px;
+  border-radius: 25px;
+  font-size: large;
+  font-family: 'Roboto', sans-serif;
+  color: #f5edc1;
+  background-color: rgb(246, 103, 1);
+  border: 8px solid #fac766;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
 button {
   width: 125px;
   height: 30px;
