@@ -1,6 +1,6 @@
 # Pair Panic
 
-## Version 1.1.0
+## Version 1.1.1
 
 ## Team Members
 
@@ -15,5 +15,13 @@
 
 ### ![Pair Panic Wireframes](/img/PairPanicWireframe.png)
 
+### ![Lighthouse Accessibility Score](/img/lighthouse.png)
+
 ### Credits
-Audio from [Pixabay](https://pixabay.com/)
+
+* Fisher-Yates Shuffle Algorithm
+* Origin Story written by ChatGPT
+
+<!-- Audio from [Pixabay](https://pixabay.com/) -->
+
+

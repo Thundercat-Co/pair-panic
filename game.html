@@ -10,18 +10,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap" rel="stylesheet">
 
-    <!-- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Gruppo&display=swap" rel="stylesheet">
-
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 
     <script defer src="js/app.js"></script>
     <title>Game Page</title>
 </head>
 <body>
     <header>
-        <h1><a href="index.html">Pair Panic</a></h1>
+        <h1><a href="index.html">PAIR PANIC</a></h1>
         <nav>
             <a href="score.html">Scores</a>
             <a href="about-us.html">About Us</a>
@@ -30,24 +27,28 @@
     </header>
     <main>
         <section id="game-space">
-            <p>Time</p>
-            <p>Player Name</p>
-            <p>Score Tally</p>
+            <!-- <p>Time</p> -->
+            <!-- <p>Player Name</p> -->
+            <!-- <p>Score Tally</p> -->
         </section>
+        <div id="end-button"></div>
         <div id="cards-display"></div>
         <div class="card">
             <div class="front"></div>
             <div class="back"></div>
         </div>
 
-        <div>
-            <button id="quit">Quit</button>
+        <div class="quit">
+            <button class="quit"onclick="window.location.href='index.html';" type="submit">Quit</button>
         </div>
     </main>
     <footer>
       <p>&copy; Thundercat Co. 2023</p>
     </footer>
 </body>
+<script  src="js/player-data.js"></script>
+<script src="js/score.js"></script>
+
 </html> 
 
 <!-- Place holder img link: ---   "https://place-hold.it/200x500/000/fff"  -->

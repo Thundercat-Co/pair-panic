@@ -1,131 +1,128 @@
 body {
-    background-color: #90BE6D;
-    width: 1440px;
-    margin: auto;
-    /* font-family: 'Gruppo', sans-serif; */
-    font-family: 'Tilt Neon', cursive;
-    font-weight: bolder;
+  background-color: #EAE2B7;
+  width: 1440px;
+  margin: auto;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bolder;
+  color: #094c70;
 }
-header{
-    background-color: #F9C74F;
-    border-top: 8px solid #277DA1;
-    border-left: 8px solid #277DA1;
-    border-right: 4px solid #277DA1;
-    border-bottom: 4px solid #277DA1;
-    border-radius: 150px;
-    padding: 2em;
-    margin-top: 2em;
-    width: 100%;
+header {
+  background-color: #EAE2B7;
+  border: 13px solid #fac766;
+  border-radius: 150px;
+  padding: 2em;
+  margin-top: 2em;
+  width: 40%;
+  margin-right: auto;
+  margin-left: auto;
 }
 
-a{
-    text-decoration: none;
-    text-decoration-color: none
+a:visited, a:link {
+  text-decoration: none;
+  text-decoration-color: none;
+  color: #d65353;
 }
-h1{
-  font-size: 3em;
-  /* font-family: 'Permanent Marker', cursive; */
+h1 {
+  font-family: 'Tilt Neon', cursive;
+  font-size: 5em;
   display: flex;
   justify-content: center;
+  color: #d65353;
 }
-nav{
-  font-size: x-large;
+nav {
+  font-size: xx-large;
   display: flex;
   justify-content: center;
+  padding-top: 15px;
 }
-a{
+a {
   padding: 0 20px 0 20px;
 }
-h2{
-    font-size: 30px;
+h2 {
+  font-size: 30px;
+  text-align: center;
+  margin: 1em;
 }
-#game-rules{
-    font-size: 20px;
+.card img {
+  width: 130px;
 }
-#game-space{
+#game-rules {
+  text-align: center;
+  font-size: 20px;
+  line-height: 25px;
+}
+#game-space {
   display: flex;
   justify-content: space-evenly;
-  margin: 2em 0 1em 0;
+  margin: 1em 0 0.5em 0;
   font-size: xx-large;
 }
-img{
-    margin: 5px;
-    border: 2px solid  #277DA1;
+img {
+  margin: 25px;
 }
-fieldset{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    max-width: 100%;
+fieldset {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 100%;
 }
-legend{
-    font-size: 1.5em;
-    text-align: center;
+
+button {
+  width: 125px;
+  height: 30px;
+  border-radius: 10px;
+  margin-top: 5px;
 }
-button{
-    width: 100px;
-    border-radius: 5px;
+.quit {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
-.creatorText{
+.creatorContainer p {
   font-size: 20px;
+  margin: 25px;
+  line-height: 25px;
 }
-article{
+.creatorContainer .creator {
+  display: flex;
+}
+.creatorContainer .rightCreator {
+  flex-direction: row-reverse;
+}
+article {
   margin: 2em;
   font-size: 20px;
 }
 footer {
-    border-top: 4px solid #277DA1;
-    border-left: 4px solid #277DA1;
-    border-right: 8px solid #277DA1;
-    border-bottom: 8px solid #277DA1;
-    border-radius: 2em;
-    padding: 1em;
-    margin-bottom: 2em;
-    background-color: #F9C74F;
+  background-color: #EAE2B7;
+  border: 13px solid #fac766;
+  border-radius: 150px;
+  padding: 2em;
+  margin: 4em;
+  width: 30%;
+  margin-right: auto;
+  margin-left: auto;
 }
-footer p{
-    text-align: center;
-    font-size: x-large;
+footer p {
+  text-align: center;
+  font-size: x-large;
 }
-
-
-div.card {
-    width: 255px;
-    height: 345px;
-    transition: transform 1s;
-    transform-style: preserve-3d;
+#cards-display {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  width: 50%;
+  height: 50%;
 }
-div.card.flipped {
-    transform: rotateY( 180deg ) ;
-    transition: transform 0.5s;
-}
-img.front {
-    background: #eee;
-    color: #277DA1;
-}
-img.back {
-    background: #277DA1;
-    color: white;
-    transform: rotateY( 180deg );
-}
-img.front, img.back {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    line-height: 300px;
-    text-align: center;
-    font-size: 60px;
-    backface-visibility: hidden;
+.origin h2,
+.origin p {
+  text-align: center;
+  line-height: 25px;
 }
 
-#cards-display{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    width: 1070px;
-    height: 1430px;
-    margin: 0 auto 0 auto;
-}
-#quit {
- 
+hr {
+  margin-top: 40px;
+  height: 4px;
+  border-color: #094c70;
+  background-color: #094c70;
 }
