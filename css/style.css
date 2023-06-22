@@ -43,19 +43,22 @@ h2 {
   text-align: center;
   margin: 1em;
 }
+.card img {
+  width: 130px;
+}
 #game-rules {
   text-align: center;
   font-size: 20px;
+  line-height: 25px;
 }
 #game-space {
   display: flex;
   justify-content: space-evenly;
-  margin: 2em 0 1em 0;
+  margin: 1em 0 0.5em 0;
   font-size: xx-large;
 }
 img {
   margin: 25px;
-  border: 1px solid  #094c70;
 }
 fieldset {
   display: flex;
@@ -79,6 +82,7 @@ button {
 .creatorContainer p {
   font-size: 20px;
   margin: 25px;
+  line-height: 25px;
 }
 .creatorContainer .creator {
   display: flex;
@@ -95,7 +99,7 @@ footer {
   border: 13px solid #fac766;
   border-radius: 150px;
   padding: 2em;
-  margin: 2em;
+  margin: 4em;
   width: 30%;
   margin-right: auto;
   margin-left: auto;
@@ -106,12 +110,16 @@ footer p {
 }
 #cards-display {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  width: 50%;
+  height: 50%;
 }
 .origin h2,
 .origin p {
   text-align: center;
+  line-height: 25px;
 }
+
 hr {
   margin-top: 40px;
   height: 4px;
