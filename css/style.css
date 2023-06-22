@@ -104,16 +104,6 @@ footer p {
   text-align: center;
   font-size: x-large;
 }
-
-
-div.card {
-  transform-style: preserve-3d;
-}
-div.card.flipped {
-  transform: rotateY( 180deg ) ;
-  transition: transform 0.5s;
-}
-
 #cards-display {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
