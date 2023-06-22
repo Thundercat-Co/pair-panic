@@ -1,136 +1,120 @@
 body {
-    background-color: #EAE2B7;
-    width: 1440px;
-    margin: auto;
-    font-family: 'Roboto', sans-serif;
-    font-weight: bolder;
-    color: #003049;
+  background-color: #EAE2B7;
+  width: 1440px;
+  margin: auto;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bolder;
+  color: #094c70;
 }
-header{
-    background-color: #EAE2B7;
-    border: 13px solid #fac766;
-    border-radius: 150px;
-    padding: 2em;
-    margin-top: 2em;
-    width: 40%;
-    margin-right: auto;
-    margin-left: auto;
+header {
+  background-color: #EAE2B7;
+  border: 13px solid #fac766;
+  border-radius: 150px;
+  padding: 2em;
+  margin-top: 2em;
+  width: 40%;
+  margin-right: auto;
+  margin-left: auto;
 }
 
-a:visited, a:link{
-    text-decoration: none;
-    text-decoration-color: none;
-    color: #d65353;
+a:visited, a:link {
+  text-decoration: none;
+  text-decoration-color: none;
+  color: #d65353;
 }
-h1{
-    font-family: 'Tilt Neon', cursive;
-    font-size: 5em;
-    display: flex;
-    justify-content: center;
-    color: #d65353;
+h1 {
+  font-family: 'Tilt Neon', cursive;
+  font-size: 5em;
+  display: flex;
+  justify-content: center;
+  color: #d65353;
 }
-nav{
+nav {
   font-size: xx-large;
   display: flex;
   justify-content: center;
   padding-top: 15px;
 }
-a{
+a {
   padding: 0 20px 0 20px;
 }
-h2{
-    font-size: 30px;
+h2 {
+  font-size: 30px;
+  text-align: center;
+  margin: 1em;
 }
-#game-examples{
-    display: flex;
+#game-rules {
+  text-align: center;
+  font-size: 20px;
 }
-#game-rules{
-    font-size: 20px;
-}
-#game-space{
+#game-space {
   display: flex;
   justify-content: space-evenly;
   margin: 2em 0 1em 0;
   font-size: xx-large;
 }
-img{
-    margin: 25px;
-    border: 2px solid  #fac766;
+img {
+  margin: 25px;
+  border: 1px solid  #094c70;
 }
-fieldset{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    max-width: 100%;
+fieldset {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 100%;
 }
-legend{
-    font-size: 1.5em;
-    text-align: center;
+
+button {
+  width: 125px;
+  height: 30px;
+  border-radius: 10px;
+  margin-top: 5px;
 }
-button{
-    width: 100px;
-    border-radius: 5px;
+.quit {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
-.creatorText{
+.creatorContainer p {
   font-size: 20px;
+  margin: 25px;
 }
-article{
+.creatorContainer .creator {
+  display: flex;
+}
+.creatorContainer .rightCreator {
+  flex-direction: row-reverse;
+}
+article {
   margin: 2em;
   font-size: 20px;
 }
 footer {
-    border-top: 4px solid #fac766;
-    border-left: 4px solid #fac766;
-    border-right: 8px solid #fac766;
-    border-bottom: 8px solid #fac766;
-    border-radius: 2em;
-    padding: 1em;
-    margin-bottom: 2em;
-    background-color: #EAE2B7;
+  background-color: #EAE2B7;
+  border: 13px solid #fac766;
+  border-radius: 150px;
+  padding: 2em;
+  margin: 2em;
+  width: 30%;
+  margin-right: auto;
+  margin-left: auto;
 }
-footer p{
-    text-align: center;
-    font-size: x-large;
+footer p {
+  text-align: center;
+  font-size: x-large;
 }
-
-
-div.card {
-    /* width: 255px; */
-    /* height: 345px; */
-    transition: transform 1s;
-    transform-style: preserve-3d;
+#cards-display {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
 }
-div.card.flipped {
-    transform: rotateY( 180deg ) ;
-    transition: transform 0.5s;
+.origin h2,
+.origin p {
+  text-align: center;
 }
-img.front {
-    /* background: #eee; */
-    /* color: #fac766; */
-}
-img.back {
-    /* background: #fac766; */
-    /* color: white; */
-    transform: rotateY( 180deg );
-}
-img.front, img.back {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    line-height: 300px;
-    text-align: center;
-    font-size: 60px;
-    backface-visibility: hidden;
-}
-
-#cards-display{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    width: 1070px;
-    height: 1430px;
-    margin: 0 auto 0 auto;
-}
-#quit {
- 
+hr {
+  margin-top: 40px;
+  height: 4px;
+  border-color: #094c70;
+  background-color: #094c70;
 }
