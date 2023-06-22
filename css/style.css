@@ -124,4 +124,7 @@ div.card.flipped {
 }
 hr {
   margin-top: 40px;
+  height: 4px;
+  border-color: #094c70;
+  background-color: #094c70;
 }
