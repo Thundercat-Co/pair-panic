@@ -15,5 +15,7 @@
 
 ### ![Pair Panic Wireframes](/img/PairPanicWireframe.png)
 
-### Credits
-Audio from [Pixabay](https://pixabay.com/)
+### ![Lighthouse Accessibility Score](/img/lighthouse.png)
+
+<!-- ### Credits
+Audio from [Pixabay](https://pixabay.com/) -->
