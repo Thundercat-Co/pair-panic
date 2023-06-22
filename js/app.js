@@ -2,28 +2,26 @@
 let allCards = [];
 let cardNames = [ 'boxcat', 'dishwasher', 'fetcher', 'gamer','licker', 'monorail', 'puppyeye', 'snuggler'];
 let cardsContainer= document.getElementById('cards-display');
-allPlayers = [];
+let allPlayerData = [];
 let activePlayer;
+let matches = 8;
 
 let activeCard = null;
 let activeId = null;
 
 function getPlayers(){
-  let previousPlayerArray = localStorage.getItem('playerArray');
+  let previousPlayerArray = localStorage.getItem('playerArr');
   let playerArray = JSON.parse(previousPlayerArray);
-  if(playerArray){
-    for(let i=0; i<playerArray.length; i++){
-      allPlayers.push(playerArray[i]);
-    }
+  for(let i=0; i<playerArray.length; i++){
+    allPlayerData.push(playerArray[i]);
   }
 }
 function currentPlayer(){
-  activePlayer = allPlayers.slice(-1);
+  activePlayer = allPlayerData.pop();
 }
 getPlayers();
 currentPlayer();
 
-console.log(activePlayer);
 // Construction function for creating card objects
 function Card (name, pairStack, uniqueId){
   this.name = name;
@@ -71,11 +69,9 @@ function renderGame(){
   }
 }
 
-
 function matched(cardElement){
   let cardName = cardElement.id;
   let recentlyClickedId = cardElement.dataset.uniqueid;
-  // console.log('this is card Element', cardElement);
   let cardElementArray = document.querySelectorAll('.card');
   if(activeCard === null){ // Runs if not card has been selected
     activeId = recentlyClickedId;
@@ -83,11 +79,11 @@ function matched(cardElement){
   } else if(activeCard !== null){ // Runs if there has been a card selected
     if(activeCard === cardName && recentlyClickedId != activeId){ // Runs if user selected correct card
       for(let i = 0; i < cardElementArray.length; i++){
-        // console.log(cardElementArray[i].getAttribute('data-name'), activeCard);
         if(cardElementArray[i].getAttribute('data-name') == activeCard){
           cardElementArray[i].style.visibility = 'hidden';
         }
       }
+      matches--;
       activeCard = null;
     }else{ //Runs if user got wrong card
       let cardImageArray = document.querySelectorAll('.card img');
@@ -101,6 +97,7 @@ function matched(cardElement){
   }
 }
 
+// need a function for when the game ends/when there are no more cards to flip
 function handleFlip(e){
   const card = document.getElementById(e.target.id);
   for(let i = 0; i < allCards.length; i++){ // Loops through card array 
@@ -109,11 +106,25 @@ function handleFlip(e){
     }
   }
   matched(e.target);
-  activePlayer[0].moves +=1;
-  console.log(activePlayer[0].moves);
+  activePlayer.moves +=1;
+  console.log(matches);
+  if(matches===0){
+    let addBtn = document.getElementById('end-button');
+    let congratBtn = document.createElement('button');
+    congratBtn.textContent = 'Congrats! Click Here To See Score!';
+    addBtn.appendChild(congratBtn);
+    congratBtn.setAttribute('onclick', "window.location.href='score.html';");
+    saveScores();
+  }
 }
 renderGame();
-console.log(allPlayers);
+
+function saveScores(){
+  console.log('save scores ran.............');
+  allPlayerData.push(activePlayer);
+  let playerDataString = JSON.stringify(allPlayerData);
+  localStorage.setItem('playerArr', playerDataString);
+}
 
 // Fix the form on index
 // Create scoring system
