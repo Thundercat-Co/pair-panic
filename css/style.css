@@ -47,14 +47,13 @@ h2 {
 }
 
 /* Hover animation code */
-.card{
-    
-    transition:all .5s ease 0s;
-  }
+.card{   
+  transition: transform 0.5s ease;
+}
 
-  .card:hover{
+.card:hover{
     transform: scale(1.1);
-  }
+}
 
 .card img {
     width: 130px;
