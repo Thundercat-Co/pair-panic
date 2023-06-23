@@ -81,7 +81,9 @@ function matched(cardElement){
     if(activeCard === cardName && recentlyClickedId != activeId){ // Runs if user selected correct card
       for(let i = 0; i < cardElementArray.length; i++){
         if(cardElementArray[i].getAttribute('data-name') == activeCard){
-          cardElementArray[i].style.visibility = 'hidden';
+          setTimeout(function(){
+            cardElementArray[i].style.visibility = 'hidden';
+          }, 1000);
         }
       }
       matches--;

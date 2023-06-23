@@ -45,9 +45,27 @@ h2 {
   text-align: center;
   margin: 1em;
 }
+
+/* Hover animation code */
+.card{
+    
+    transition:all .5s ease 0s;
+  }
+
+  .card:hover{
+    transform: scale(1.1);
+  }
+
 .card img {
-  width: 130px;
+    width: 130px;
+    border: 2px solid transparent;
 }
+
+.card img:hover {
+    border:solid #d65353; 2px;
+
+}
+
 #game-rules {
   text-align: center;
   font-size: 20px;
