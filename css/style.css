@@ -24,6 +24,7 @@ h1 a:visited, a:link {
 a:visited, a:link {
   color: rgb(246, 103, 1);
 }
+
 h1 {
   font-family: 'Tilt Neon', cursive;
   font-size: 5em;
@@ -52,17 +53,16 @@ h2 {
 }
 
 .card:hover{
-    transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 .card img {
-    width: 130px;
-    border: 2px solid transparent;
+  width: 130px;
+  border: 2px solid transparent;
 }
 
 .card img:hover {
-    border:solid #d65353; 2px;
-
+  border:solid #d65353 2px;
 }
 
 #game-rules {
