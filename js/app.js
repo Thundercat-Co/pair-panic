@@ -10,7 +10,8 @@ let matches = 8;
 let activeCard = null;
 let activeId = null;
 
-function getPlayers(){
+//Retrieves player information from local storage
+function getPlayers(){ 
   let previousPlayerArray = localStorage.getItem('playerArr');
   let playerArray = JSON.parse(previousPlayerArray);
   for(let i=0; i<playerArray.length; i++){
@@ -33,7 +34,7 @@ function Card (name, pairStack, uniqueId){
   allCards.push(this);
 }
 
-// Usingt the construct funtion to create cards for each cardname index
+// Using the card constructor to instantiate new cards for each index of cardName
 function createPair(){
   for(let i=0; i<cardNames.length; i++){
     new Card(cardNames[i], '1', i);
@@ -44,6 +45,7 @@ function createPair(){
 }
 createPair();
 
+//Builds card element
 function buildCard(card){
   let cardDiv = document.createElement('div');
   cardDiv.setAttribute('pair', card.pairStack);
@@ -58,9 +60,9 @@ function buildCard(card){
   cardDiv.appendChild(frontImage);
   return cardDiv;
 }
-// Fucntion 
+
+// Shuffle cards using Fisher-Yates shuffle algorithm
 function renderGame(){
-  // Shuffle cards using Fisher-Yates shuffle algorithm
   for (let i=allCards.length - 1;i>0;i--) {
     let j = Math.floor(Math.random()* (i+1));
     [allCards[i],allCards[j]]=[allCards[j],allCards[i]];
@@ -70,6 +72,7 @@ function renderGame(){
   }
 }
 
+//Matching card logic
 function matched(cardElement){
   let cardName = cardElement.id;
   let recentlyClickedId = cardElement.dataset.uniqueid;
@@ -99,6 +102,8 @@ function matched(cardElement){
     }
   }
 }
+
+//Updates user score
 function updateTally(usr){
   let player = usr.user;
   let nameContainer = document.getElementById('name');
@@ -107,10 +112,11 @@ function updateTally(usr){
   let movesContainer = document.getElementById('tally');
   movesContainer.textContent =`Moves : ${renderedMoves}`;
 }
-// need a function for when the game ends/when there are no more cards to flip
+
+// Event handler for when a card is clicked
 function handleFlip(e){
   const card = document.getElementById(e.target.id);
-  for(let i = 0; i < allCards.length; i++){ // Loops through card array 
+  for(let i = 0; i < allCards.length; i++){ // Loops through card array
     if(allCards[i].name === e.target.id){
       e.target.setAttribute('src', allCards[i].image);
     }
@@ -129,6 +135,7 @@ function handleFlip(e){
 }
 renderGame();
 
+//Saves updated player data to local storage
 function saveScores(){
   console.log('save scores ran.............');
   allPlayerData.push(activePlayer);
@@ -136,13 +143,3 @@ function saveScores(){
   localStorage.setItem('playerArr', playerDataString);
 }
 
-// Fix the form on index
-// Create scoring system
-// Store score
-// slow down second flip
-// So we don't get confused: SSGP
-//  stringify ---> js to local storage/JSON
-//  parse -------> local storage/JSON to js
-// JSON.stringify() A common use of JSON is to exchange data to/from a web server.
-// When sending data to a web server, the data has to be a string. 
-//Convert a JavaScript object into a string with JSON.stringify() .
